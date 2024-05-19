@@ -1,0 +1,42 @@
+#modal {
+    display: none;
+    padding: 30px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+#modal h1 {
+    font-family: sans-serif;
+    margin: 0px 0px 20px;
+}
+
+#modal p {
+    display: block;
+    font-family: Arial;
+    margin: 5px 0px 20px 0px;
+}
+
+#modal img {
+    display: block;
+    border: 5px solid #f7f7f7;
+}
+
+#ativar-checkbox:checked ~ #modal {
+    display: block;
+}
+
+#fechar{
+    display: flex;
+    max-width: 20px;
+    margin: 20px auto;
+    background-color: #ff000070;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
