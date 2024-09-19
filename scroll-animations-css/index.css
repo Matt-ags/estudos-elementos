@@ -1,0 +1,76 @@
+:root{
+  --scroll-height: 25px;
+
+  /* uso de variaveis */
+}
+
+/* TENHA EM MENTE: 
+SCROLL(): conforme faz a rolagem do mouse, scroll, vai tendo uma espécie de progressão
+view():Ao contrário do scroll, ele é mais da posição, conforme um elemento entra ou sai da tela */
+
+section{
+  font-size: 1.5rem;
+  padding-block: var(--scroll-height);
+  margin-inline: auto;
+  width: min(60ch, 100%);
+}
+
+.c-indicator{
+  background-color: tomato;
+  transform-origin: left;
+  height: var(--scroll-height);
+  position: fixed;
+  inset: 0;
+  animation: scroll 1ms ease-in-out;
+  animation-timeline: scroll();
+  /* um indicador de leitura! */
+
+
+}
+
+p{
+  animation: appear 1ms ease-in-out forwards;
+  animation-timeline: view();
+  /* adicionado esse view, já da um efeito daora, varias possibilidades! */
+  /* este site: https://scroll-driven-animations.style/tools/view-timeline/ranges/#range-start-name=cover&range-start-percentage=0&range-end-name=cover&range-end-percentage=50&view-timeline-axis=block&view-timeline-inset=0&subject-size=smaller&subject-animation=reveal&interactivity=clicktodrag&show-areas=yes&show-fromto=yes&show-labels=yes 
+  da pra ver como e quando a animção vai e deve começar! */
+  animation-range: cover 0% cover 40%;
+}
+
+img{
+  animation: reveal 1ms ease-in-out both;
+  animation-timeline: view();
+  animation-range: cover 0% cover 40%;
+  
+}
+@keyframes appear{
+  from{
+    opacity: 0;
+    translate: -100vh 0;
+  }
+
+  to{
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes scroll{
+  from{
+    scale: 0 1;
+  }
+
+  to{
+    scale: 1 1;
+  }
+}
+
+@keyframes reveal{
+  from{
+    opacity: 0;
+  }
+
+  to{
+    opacity: 1;
+  }
+}
