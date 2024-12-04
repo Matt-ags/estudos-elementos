@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Vaga</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+        }
+
+        #vagas-cards {
+            background-color: #DCDCDC;
+            width: 300px;
+            padding: 20px;
+            border: 2px solid #827D7E;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #vagas-cards p {
+            margin: 8px 0;
+        }
+
+        #card-titulo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #card-info {
+            font-size: 16px;
+            color: #555;
+        }
+
+        button {
+            background-color: #827D7E;
+            color: #FFF;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #6b6869;
+        }
+
+        #detalhes-container {
+            margin-top: 20px;
+            background-color: #FFF;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            display: none;
+        }
+
+        #detalhes-container h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        #detalhes-container ul {
+            padding-left: 20px;
+        }
+
+        #detalhes-container ul li {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="vagas-cards">
+        <p id="card-titulo">Desenvolvimento de Sistemas</p>
+        <p id="card-info">Padaria Seu Zé</p>
+        <p id="card-info">Salário: R$980,00</p>
+        <p id="card-info">São Paulo, SP</p>
+        <p id="card-info">Vagas: 20</p>
+        <button onclick="mostrarDetalhes()">Ver detalhes</button>
+
+        <div id="detalhes-container">
+            <h3>Detalhes da Vaga</h3>
+            <p><strong>Cargo:</strong> Desenvolvimento de Sistemas</p>
+            <p><strong>Empresa:</strong> Seu Zé INC.</p>
+            <p><strong>Localização:</strong> Rua do Oratório, 215, Mooca, SP</p>
+            <p><strong>Tempo de contrato:</strong> 1 ano</p>
+            <p><strong>Horário:</strong> 9:00 às 16:00</p>
+            <h4>Benefícios:</h4>
+            <ul>
+                <li>Vale refeição</li>
+                <li>Vale transporte</li>
+                <li>Possibilidade de efetivação</li>
+            </ul>
+            <h4>Requisitos:</h4>
+            <ul>
+                <li>Cursar Técnico/Superior em Desenvolvimento de Sistemas</li>
+                <li>Conclusão: 2º semestre 2025 / 2º semestre 2026</li>
+                <li>Morar em SP</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function mostrarDetalhes() {
+            const detalhes = document.getElementById("detalhes-container");
+            if (detalhes.style.display === "none" || detalhes.style.display === "") {
+                detalhes.style.display = "block";
+            } else {
+                detalhes.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
