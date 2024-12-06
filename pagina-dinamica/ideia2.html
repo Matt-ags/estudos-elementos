@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página dinamica - Idéia 01</title>
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    main {
+        padding: 1rem;
+    }
+
+    h1 {
+        color: #333;
+    }
+    .pc-card {
+        background-color: #f4f4f4;
+        margin: 1rem auto;
+        padding: 1.5rem;
+        width: 50%;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .pc-card button {
+        padding: 0.5rem 1rem;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .pc-card button:hover {
+        background-color: #45a049;
+    }
+    .popup {
+        display: none;
+        background-color: white;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+    .popup button {
+        background-color: #333;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+
+    @media (max-width: 600px) {
+        #computador {
+            display: none;
+        }
+        #celular {
+            display: block;
+        }
+        .mobile-card {
+            margin: 1rem auto;
+            padding: 1rem;
+            background-color: #e0f7fa;
+            border: 1px solid #006064;
+            border-radius: 8px;
+            text-align: left;
+        }
+        .mobile-card h2 {
+            color: #00796b;
+        }
+    }
+</style>
+<body>
+    <div id="content">
+        <h1>Conteúdo para telas grandes</h1>
+        <div id="computador">
+            <div class="pc-card">
+                <h1>Você está em um computador!</h1>
+                <h2>Quem criou o primeiro computador?</h2>
+                <button onclick="mostrarPopup()">Ver Resposta</button>
+            </div>
+            <div id="popup" class="popup">
+                <p>O primeiro homem a imaginar e construir um computador de verdade foi o matemático, filósofo, economista e escritor inglês Charles Babbage (1791-1871).</p>
+                <button onclick="fecharPopup()">Fechar</button>
+            </div>
+        </div>
+    </div>
+<!-- 
+    A ideia 2, por outro lado, utiliza mais do js, que coloca um elemento na tela com base no tamanho da tela, muito show.
+    Acho que desta forma o site fica mais leve. E facilita colocar "itens" -->
+
+    <script>
+        function updateContent() {
+            const content = document.getElementById('content');
+            if (window.matchMedia('(max-width: 600px)').matches) {
+                content.innerHTML = `
+        <h1>Conteúdo para telas pequenas</h1>
+        <div id="celular">
+            <div class="mobile-card">
+                <h1>Você está em um celular!</h1>
+                <h2>Quem criou o primeiro celular?</h2>
+                <p>O primeiro celular foi criado por Martin Cooper em 1973 enquanto trabalhava na Motorola.</p>
+            </div>
+        </div>`;
+            } else {
+                content.innerHTML = '<h1>Conteúdo para telas grandes</h1> <div id="computador"> <div class="pc-card"> <h1>Você está em um computador!</h1> <h2>Quem criou o primeiro computador?</h2> <button onclick="mostrarPopup()">Ver Resposta</button> </div> <div id="popup" style="display: none;" class="popup"> <p>O primeiro homem a imaginar e construir um computador de verdade foi o matemático, filósofo, economista e escritor inglês Charles Babbage (1791-1871).</p> <button onclick="fecharPopup()">Fechar</button> </div> </div>';
+            }
+        }
+
+
+        updateContent();
+
+        // Abaixo é o que faz a mágica acontecer
+        window.addEventListener('resize', updateContent);
+
+        function mostrarPopup() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function fecharPopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
